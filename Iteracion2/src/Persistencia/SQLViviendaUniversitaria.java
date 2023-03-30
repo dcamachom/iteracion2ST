@@ -41,11 +41,11 @@ public class SQLViviendaUniversitaria {
         return (long) q.executeUnique();            
 	}
 	
-	public ViviendaUniversitaria darViviendaUniversitariaPorId (PersistenceManager pm, long idBebedor) 
+	public ViviendaUniversitaria darViviendaUniversitariaPorId (PersistenceManager pm, long id) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaViviendaUniversitaria () + " WHERE id = ?");
 		q.setResultClass(ViviendaUniversitaria.class);
-		q.setParameters(idBebedor);
+		q.setParameters(id);
 		return (ViviendaUniversitaria) q.executeUnique();
 	}
 	
