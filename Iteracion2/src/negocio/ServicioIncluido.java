@@ -1,7 +1,6 @@
 package negocio;
 
-public class ServiciosNoIncluidos implements VOServiciosNoIncluidos{
-	
+public class ServicioIncluido implements VOServicioIncluido{
 	/*
 	 * Atributos
 	 */
@@ -15,7 +14,7 @@ public class ServiciosNoIncluidos implements VOServiciosNoIncluidos{
 	/**
 	 * Constructor por defecto
 	 */
-	public ServiciosNoIncluidos() {
+	public ServicioIncluido() {
 		this.idServicio=0;
 		this.idReserva=0;
 	}
@@ -25,7 +24,7 @@ public class ServiciosNoIncluidos implements VOServiciosNoIncluidos{
 	 * @param idServicio
 	 * @param idReserva
 	 */
-	public ServiciosNoIncluidos(long idServicio, long idReserva) {
+	public ServicioIncluido(long idServicio, long idReserva) {
 		this.idReserva=idReserva;
 		this.idServicio=idServicio;
 	}
@@ -52,8 +51,7 @@ public class ServiciosNoIncluidos implements VOServiciosNoIncluidos{
 	
 	public String toString() 
 	{
-		return "Servicios no incluidos [id Reserva=" + idReserva+
+		return "Servicios incluidos [id Reserva=" + idReserva+
 				", id servicio="+idServicio+"]";
 	}
-
 }

@@ -1,6 +1,6 @@
 package negocio;
 
-public class ServiciosAdicionalesUsados implements VOServiciosAdicionalesUsados{
+public class ServicioAdicionalUsado implements VOServicioAdicionalUsado{
 
 	//revisar el  nombre- singular
 	/*
@@ -16,7 +16,7 @@ public class ServiciosAdicionalesUsados implements VOServiciosAdicionalesUsados{
 	/**
 	 * Constructor por defecto
 	 */
-	public ServiciosAdicionalesUsados() {
+	public ServicioAdicionalUsado() {
 		this.idServicio=0;
 		this.idReserva=0;
 	}
@@ -26,7 +26,7 @@ public class ServiciosAdicionalesUsados implements VOServiciosAdicionalesUsados{
 	 * @param idServicio
 	 * @param idReserva
 	 */
-	public ServiciosAdicionalesUsados(long idServicio, long idReserva) {
+	public ServicioAdicionalUsado(long idServicio, long idReserva) {
 		this.idReserva=idReserva;
 		this.idServicio=idServicio;
 	}

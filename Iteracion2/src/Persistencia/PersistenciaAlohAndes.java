@@ -26,9 +26,9 @@ import negocio.Operador;
 import negocio.PersonaNatural;
 import negocio.Reserva;
 import negocio.Servicio;
-import negocio.ServiciosAdicionalesUsados;
-import negocio.ServiciosIncluidos;
-import negocio.ServiciosNoIncluidos;
+import negocio.ServicioAdicionalUsado;
+import negocio.ServicioIncluido;
+import negocio.ServicioNoIncluido;
 import negocio.Vecino;
 import negocio.ViviendaUniversitaria;
 import oracle.sql.SQLUtil;
@@ -69,9 +69,9 @@ public class PersistenciaAlohAndes {
 		tablas.add("PersonaNatural");
 		tablas.add("Reserva");
 		tablas.add("Servicio");
-		tablas.add("ServiciosAdicionalesUsados");
-		tablas.add("ServiciosIncluidos");
-		tablas.add("ServiciosNoIncluidos");
+		tablas.add("ServicioAdicionalUsado");
+		tablas.add("ServicioIncluido");
+		tablas.add("ServicioNoIncluido");
 		tablas.add("Vecino");
 		tablas.add("ViviendaUniversitaria");
 		
@@ -170,15 +170,15 @@ public class PersistenciaAlohAndes {
 		return tablas.get(11);
 	}
 	
-	public String darTablaServiciosAdicionalesUsados() {
+	public String darTablaServicioAdicionalUsado() {
 		return tablas.get(12);
 	}
 	
-	public String darTablaServiciosIncluidos() {
+	public String darTablaServicioIncluido() {
 		return tablas.get(13);
 	}
 	
-	public String darTablaServiciosNoIncluidos() {
+	public String darTablaServicioNoIncluido() {
 		return tablas.get(14);
 	}
 	

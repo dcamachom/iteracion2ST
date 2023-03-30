@@ -1,6 +1,6 @@
 package negocio;
 
-public interface VOServiciosIncluidos {
+public interface VOServicioIncluido {
 	
 	/*
 	 * Métodos

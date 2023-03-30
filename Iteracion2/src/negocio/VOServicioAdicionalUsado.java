@@ -1,6 +1,6 @@
 package negocio;
 
-public interface VOServiciosNoIncluidos {
+public interface VOServicioAdicionalUsado {
 	
 	/*
 	 * Métodos
@@ -12,5 +12,4 @@ public interface VOServiciosNoIncluidos {
 
 	@Override
 	public String toString();
-
 }
