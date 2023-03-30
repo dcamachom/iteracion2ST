@@ -121,5 +121,9 @@ public class PersistenciaAlohAndes {
 		return resp;
 	}
 	
+	public String darTablaApartamento() {
+		return tablas.get(1);
+	}
+	
 	
 }
