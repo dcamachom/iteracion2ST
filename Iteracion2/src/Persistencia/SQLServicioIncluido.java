@@ -48,7 +48,7 @@ public class SQLServicioIncluido {
         return (long) q.executeUnique();            
 	}
 	
-	public ServicioIncluido darViviendaUniversitariaPorIdServicio (PersistenceManager pm, long idServicio) 
+	public ServicioIncluido darServicioIncluidoPorIdServicio (PersistenceManager pm, long idServicio) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioIncluido () + " WHERE idServicio = ?");
 		q.setResultClass(ServicioIncluido.class);
@@ -56,7 +56,7 @@ public class SQLServicioIncluido {
 		return (ServicioIncluido) q.executeUnique();
 	}
 	
-	public ServicioIncluido darViviendaUniversitariaPorIdReserva (PersistenceManager pm, long idReserva) 
+	public ServicioIncluido darServicioIncluidoPorIdReserva (PersistenceManager pm, long idReserva) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioIncluido () + " WHERE idReserva = ?");
 		q.setResultClass(ServicioIncluido.class);
