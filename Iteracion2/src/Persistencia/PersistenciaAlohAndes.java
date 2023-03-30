@@ -57,6 +57,7 @@ public class PersistenciaAlohAndes {
 		//crearClasesSQL()
 		
 		tablas= new LinkedList<String>();
+		tablas.add("AlohAndes_sequence");
 		tablas.add("Apartamento");
 		tablas.add("Casa");
 		tablas.add("Cliente");
@@ -121,9 +122,71 @@ public class PersistenciaAlohAndes {
 		return resp;
 	}
 	
+	public String darSequAlohAndes() {
+		return tablas.get(0);
+	}
+	
 	public String darTablaApartamento() {
 		return tablas.get(1);
 	}
 	
+	public String darTablaCasa() {
+		return tablas.get(2);
+	}
 	
+	public String darTablaCliente() {
+		return tablas.get(3);
+	}
+	
+	public String darTablaHabitacion() {
+		return tablas.get(4);
+	}
+	
+	public String darTablaHostal() {
+		return tablas.get(5);
+	}
+	
+	public String darTablaHotel() {
+		return tablas.get(6);
+	}
+	
+	public String darTablaInmueble() {
+		return tablas.get(7);
+	}
+	
+	public String darTablaOperador() {
+		return tablas.get(8);
+	}
+	
+	public String darTablaPersonaNatural() {
+		return tablas.get(9);
+	}
+	
+	public String darTablaReserva() {
+		return tablas.get(10);
+	}
+	
+	public String darTablaServicio() {
+		return tablas.get(11);
+	}
+	
+	public String darTablaServiciosAdicionalesUsados() {
+		return tablas.get(12);
+	}
+	
+	public String darTablaServiciosIncluidos() {
+		return tablas.get(13);
+	}
+	
+	public String darTablaServiciosNoIncluidos() {
+		return tablas.get(14);
+	}
+	
+	public String darTablaVecino() {
+		return tablas.get(15);
+	}
+	
+	public String darTablaViviendaUniversitaria() {
+		return tablas.get(16);
+	}
 }
