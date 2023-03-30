@@ -8,7 +8,6 @@ import javax.jdo.Query;
 
 import negocio.ViviendaUniversitaria;
 
-
 public class SQLViviendaUniversitaria {
 	
 	/*
@@ -29,6 +28,32 @@ public class SQLViviendaUniversitaria {
 		this.pa=pa;
 	}
 	
+	public long adicionarViviendaUniversitaria(PersistenceManager pm, long id) {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaViviendaUniversitaria () + "(id) values (?)");
+        q.setParameters(id);
+        return (long) q.executeUnique();
+	}
 	
+	public long eliminarViviendaUniversitariaPorId (PersistenceManager pm, long id)
+	{
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaViviendaUniversitaria () + " WHERE id = ?");
+        q.setParameters(id);
+        return (long) q.executeUnique();            
+	}
+	
+	public ViviendaUniversitaria darViviendaUniversitariaPorId (PersistenceManager pm, long idBebedor) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaViviendaUniversitaria () + " WHERE id = ?");
+		q.setResultClass(ViviendaUniversitaria.class);
+		q.setParameters(idBebedor);
+		return (ViviendaUniversitaria) q.executeUnique();
+	}
+	
+	public List<ViviendaUniversitaria> darViviendasUniversitarias (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaViviendaUniversitaria ());
+		q.setResultClass(ViviendaUniversitaria.class);
+		return (List<ViviendaUniversitaria>) q.executeList();
+	}
 
 }
