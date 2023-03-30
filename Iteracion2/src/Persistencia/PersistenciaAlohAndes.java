@@ -47,6 +47,38 @@ public class PersistenciaAlohAndes {
 	
 	private SQLUtil sqlUtil;
 	
+	private SQLApartamento sqlApartamento;
+	
+	private SQLCasa sqlCasa;
+	
+	private SQLCliente sqlCliente;
+	
+	private SQLHabitacion sqlHabitacion;
+	
+	private SQLHostal sqlHostal;
+	
+	private SQLHotel sqlHotel;
+	
+	private SQLInmueble sqlInmueble;
+	
+	private SQLOperador sqlOperador;
+	
+	private SQLPersonaNatural sqlPersonaNatural;
+	
+	private SQLReserva sqlReserva;
+	
+	private SQLServicio sqlServicio;
+	
+	private SQLServicioAdicionalUsado sqlServicioAdicionalUsado;
+	
+	private SQLServicioIncluido sqlServicioIncluido;
+	
+	private SQLServicioNoIncluido sqlServicioNoIncluido;
+	
+	private SQLVecino sqlVecino;
+	
+	private SQLViviendaUniversitaria sqlViviendaUniversitaria;
+	
 	/*
 	 * Métodos del manejador de persistencia
 	 */
@@ -54,7 +86,7 @@ public class PersistenciaAlohAndes {
 	private PersistenciaAlohAndes()
 	{
 		pmf= JDOHelper.getPersistenceManagerFactory("AlohAndes");
-		//crearClasesSQL()
+		crearClasesSQL();
 		
 		tablas= new LinkedList<String>();
 		tablas.add("AlohAndes_sequence");
@@ -120,6 +152,25 @@ public class PersistenciaAlohAndes {
 			resp.add(nom.getAsString());
 		}
 		return resp;
+	}
+	
+	private void crearClasesSQL() {
+		sqlApartamento= new SQLApartamento(this);
+		sqlCasa= new SQLCasa (this);
+		sqlCliente= new SQLCliente (this);
+		sqlHabitacion= new SQLHabitacion (this);
+		sqlHostal= new SQLHostal(this);
+		sqlHotel= new SQLHotel (this);
+		sqlInmueble= new SQLInmueble (this);
+		sqlOperador= new SQLOperador (this);
+		sqlPersonaNatural= new SQLPersonaNatural (this);
+		sqlReserva= new SQLReserva (this);
+		sqlServicio= new SQLServicio(this);
+		sqlServicioAdicionalUsado= new SQLServicioAdicionalUsado (this);
+		sqlServicioIncluido= new SQLServicioIncluido (this);
+		sqlServicioNoIncluido= new SQLServicioNoIncluido (this);
+		sqlVecino= new SQLVecino(this);
+		sqlViviendaUniversitaria= new SQLViviendaUniversitaria (this);
 	}
 	
 	public String darSequAlohAndes() {
@@ -188,5 +239,23 @@ public class PersistenciaAlohAndes {
 	
 	public String darTablaViviendaUniversitaria() {
 		return tablas.get(16);
+	}
+	
+//	private long nextval ()
+//	{
+//		long resp = sqlUtil.nextval(pmf.getPersistenceManager());
+//        log.trace ("Generando secuencia: " + resp);
+//        return resp;
+//    }
+	
+	private String darDetalleException(Exception e) 
+	{
+		String resp = "";
+		if (e.getClass().getName().equals("javax.jdo.JDODataStoreException"))
+		{
+			JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
+			return je.getNestedExceptions() [0].getMessage();
+		}
+		return resp;
 	}
 }
