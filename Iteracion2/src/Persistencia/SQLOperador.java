@@ -41,7 +41,7 @@ public class SQLOperador {
         return (long) q.executeUnique();            
 	}
 	
-	public Operador darViviendaUniversitariaPorId (PersistenceManager pm, long id) 
+	public Operador darOperadorPorId (PersistenceManager pm, long id) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador () + " WHERE id = ?");
 		q.setResultClass(Operador.class);
@@ -49,7 +49,7 @@ public class SQLOperador {
 		return (Operador) q.executeUnique();
 	}
 	
-	public List<Operador> darViviendasUniversitarias (PersistenceManager pm)
+	public List<Operador> darOperadores (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador ());
 		q.setResultClass(Operador.class);

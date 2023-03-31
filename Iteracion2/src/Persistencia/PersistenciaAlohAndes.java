@@ -1,6 +1,7 @@
 package Persistencia;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.LinkedList;
@@ -723,6 +724,361 @@ public class PersistenciaAlohAndes {
 	 * Métodos para los inmuebles
 	 *****************************/
 	
+	public Inmueble adicionarInmueble(int costoBase, boolean disponible)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlInmueble.adicionarInmueble(pm, id, costoBase, disponible);
+            tx.commit();
+            
+            log.trace ("Inserción del Inmueble: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Inmueble (id, costoBase, disponible);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarInmueblePorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlInmueble.eliminarInmueblePorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Inmueble> darInmueble ()
+	{
+		return sqlInmueble.darInmuebles (pmf.getPersistenceManager());
+	}
+	
+	public Inmueble darInmueblePorId (long id)
+	{
+		return sqlInmueble.darInmueblePorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/* **************************
+	 * Métodos de los OPERADORES
+	 ****************************/
+	
+	public Operador adicionarOperador(String nombre, String tipoOperador)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlOperador.adicionarOperador(pm, id, nombre, tipoOperador);
+            tx.commit();
+            
+            log.trace ("Inserción del operador: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Operador (id,nombre, tipoOperador);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarOperadorPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlOperador.eliminarOperadorPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Operador> darOperador ()
+	{
+		return sqlOperador.darOperadores (pmf.getPersistenceManager());
+	}
+	
+	public Operador darOperadorPorId (long id)
+	{
+		return sqlOperador.darOperadorPorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/*
+	 * Métodos de las PERSONAS NATURALES
+	 */
+	
+	public PersonaNatural adicionarPersonaNatural(String nombre, String correo, String telefono)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlPersonaNatural.adicionarPersonaNatural(pm, id, nombre, correo, telefono);
+            tx.commit();
+            
+            log.trace ("Inserción de persona natural: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new PersonaNatural (id,nombre, correo, telefono);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarPersonaNaturalPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlPersonaNatural.eliminarPersonaNaturalPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<PersonaNatural> darPersonaNatural ()
+	{
+		return sqlPersonaNatural.darPersonasNaturales (pmf.getPersistenceManager());
+	}
+	
+	public PersonaNatural darPersonaNaturalPorId (long id)
+	{
+		return sqlPersonaNatural.darPersonaNaturalPorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/* ***************************
+	 * Método para las RESERVAS
+	 ****************************/
+	
+	public Reserva adicionarReserva(Date fechaInicio, Date fechaFin, long idCliente, long idInmueble)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlReserva.adicionarReserva(pm, id, fechaInicio, fechaFin, idCliente, idInmueble);
+            tx.commit();
+            
+            log.trace ("Inserción del reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Reserva (id,fechaInicio, fechaFin, idCliente, idInmueble);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarReservaPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlReserva.eliminarReservaPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Reserva> darReserva ()
+	{
+		return sqlReserva.darReservas (pmf.getPersistenceManager());
+	}
+	
+	public Reserva darReservaPorId (long id)
+	{
+		return sqlReserva.darReservaPorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/* *************************
+	 * Método para los SERVICIOS
+	 **************************/
+	
+	public Servicio adicionarServicio(String nombre, String descripcion, int valorAdicional)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlServicio.adicionarServicio(pm, id, nombre, descripcion, valorAdicional);
+            tx.commit();
+            
+            log.trace ("Inserción del reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Servicio (id,nombre, descripcion, valorAdicional);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarServicioPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicio.eliminarServicioPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Servicio> darServicio()
+	{
+		return sqlServicio.darServicios (pmf.getPersistenceManager());
+	}
+	
+	public Servicio darServicioPorId (long id)
+	{
+		return sqlServicio.darServicioPorId (pmf.getPersistenceManager(), id);
+	}
 	
 	
 }

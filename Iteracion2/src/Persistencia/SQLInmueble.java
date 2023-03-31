@@ -28,7 +28,7 @@ public class SQLInmueble {
 		this.pa=pa;
 	}
 	
-	public long adicionarInmueblePorId(PersistenceManager pm, long id,int costoBase, boolean disponible) {
+	public long adicionarInmueble(PersistenceManager pm, long id,int costoBase, boolean disponible) {
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaInmueble () + "(id, costoBase, disponible) values (?, ?, ?)");
         q.setParameters(id, costoBase, disponible);
         return (long) q.executeUnique();
@@ -41,7 +41,7 @@ public class SQLInmueble {
         return (long) q.executeUnique();            
 	}
 	
-	public Inmueble darViviendaUniversitariaPorId (PersistenceManager pm, long id) 
+	public Inmueble darInmueblePorId (PersistenceManager pm, long id) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaInmueble () + " WHERE id = ?");
 		q.setResultClass(Inmueble.class);
@@ -49,7 +49,7 @@ public class SQLInmueble {
 		return (Inmueble) q.executeUnique();
 	}
 	
-	public List<Inmueble> darViviendasUniversitarias (PersistenceManager pm)
+	public List<Inmueble> darInmuebles (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaInmueble ());
 		q.setResultClass(Inmueble.class);

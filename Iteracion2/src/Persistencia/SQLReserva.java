@@ -50,7 +50,7 @@ public class SQLReserva {
 		return (Reserva) q.executeUnique();
 	}
 	
-	public List<Reserva> darViviendasUniversitarias (PersistenceManager pm)
+	public List<Reserva> darReservas (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva ());
 		q.setResultClass(Reserva.class);
