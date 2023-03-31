@@ -501,5 +501,9 @@ public class PersistenciaAlohAndes {
 	{
 		return sqlCliente.darClientePorNombre (pmf.getPersistenceManager(), nombre);
 	}
+	
+	/* *****************************
+	 * Método para las HABITACIONES
+	 ******************************/
 
 }
