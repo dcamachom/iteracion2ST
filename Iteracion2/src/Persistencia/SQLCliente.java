@@ -25,23 +25,40 @@ public class SQLCliente {
         return (long) q.executeUnique();
 	}
 	
-	public long eliminarCliente (PersistenceManager pm, long idCliente)
+	public long eliminarClientePorId (PersistenceManager pm, long idCliente)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCliente () + " WHERE id = ?");
         q.setParameters(idCliente);
         return (long) q.executeUnique();
 	}
+	
+	public long eliminarClientePorNombre (PersistenceManager pm, String nombre)
+	{
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCliente () + " WHERE nombre = ?");
+        q.setParameters(nombre);
+        return (long) q.executeUnique();
+	}
+	
 	public List<Cliente> darClientes (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaCliente ());
 		q.setResultClass(Cliente.class);
 		return (List<Cliente>) q.executeList();
 	}
+	
 	public Cliente darClientePorId (PersistenceManager pm, long idCliente) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaCliente () + " WHERE id = ?");
 		q.setResultClass(Cliente.class);
 		q.setParameters(idCliente);
+		return (Cliente) q.executeUnique();
+	}
+	
+	public Cliente darClientePorNombre (PersistenceManager pm, String nombre) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaCliente () + " WHERE nombre = ?");
+		q.setResultClass(Cliente.class);
+		q.setParameters(nombre);
 		return (Cliente) q.executeUnique();
 	}
 

@@ -24,7 +24,7 @@ private final static String SQL = PersistenciaAlohAndes.SQL;
         return (long) q.executeUnique();
 	}
 	
-	public long eliminarCasa (PersistenceManager pm, long idCasa)
+	public long eliminarCasaPorId (PersistenceManager pm, long idCasa)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCasa () + " WHERE id = ?");
         q.setParameters(idCasa);
