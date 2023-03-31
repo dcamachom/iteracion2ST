@@ -42,7 +42,7 @@ public class SQLHostal {
         return (long) q.executeUnique();            
 	}
 	
-	public Hostal darViviendaUniversitariaPorId (PersistenceManager pm, long id) 
+	public Hostal darHostalPorId (PersistenceManager pm, long id) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaHostal () + " WHERE id = ?");
 		q.setResultClass(Hostal.class);
@@ -50,7 +50,7 @@ public class SQLHostal {
 		return (Hostal) q.executeUnique();
 	}
 	
-	public List<Hostal> darViviendasUniversitarias (PersistenceManager pm)
+	public List<Hostal> darHostales (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaHostal ());
 		q.setResultClass(Hostal.class);

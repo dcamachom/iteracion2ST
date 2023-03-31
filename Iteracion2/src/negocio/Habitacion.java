@@ -30,7 +30,8 @@ public class Habitacion  implements VOHabitacion{
 	 * @param compartida
 	 * @param tipo
 	 */
-	public Habitacion(int capacidad, boolean compartida, String tipo) {
+	public Habitacion(long id,int capacidad, boolean compartida, String tipo) {
+		this.id=id;
 		this.capacidad=capacidad;
 		this.compartida=compartida;
 		this.tipo=tipo;

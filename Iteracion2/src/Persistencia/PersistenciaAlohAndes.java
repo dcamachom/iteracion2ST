@@ -1,6 +1,7 @@
 package Persistencia;
 
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -402,7 +403,7 @@ public class PersistenciaAlohAndes {
 	 * Métodos para manejar los CLIENTES
 	 * *********************************/
 
-	public Cliente adicionarTipoBebida(String nombre, String correo, String telefono, String tipoMiembro)
+	public Cliente adicionarClientes(String nombre, String correo, String telefono, String tipoMiembro)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -492,12 +493,12 @@ public class PersistenciaAlohAndes {
 		return sqlCliente.darClientes (pmf.getPersistenceManager());
 	}
 	
-	public Cliente darTipoBebidaPorId (long idTipoBebida)
+	public Cliente darClientePorId (long idTipoBebida)
 	{
 		return sqlCliente.darClientePorId (pmf.getPersistenceManager(), idTipoBebida);
 	}
 	
-	public Cliente darTipoBebidaPorNombre (String nombre)
+	public Cliente darClientePorNombre (String nombre)
 	{
 		return sqlCliente.darClientePorNombre (pmf.getPersistenceManager(), nombre);
 	}
@@ -506,4 +507,222 @@ public class PersistenciaAlohAndes {
 	 * Método para las HABITACIONES
 	 ******************************/
 
+	public Habitacion adicionarHabitacion(int capacidad, boolean compartida, String tipo)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlHabitacion.adicionarHabitacion(pm, id, capacidad, compartida,tipo);
+            tx.commit();
+            
+            log.trace ("Inserción de la habitacion: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Habitacion (id, capacidad, compartida,tipo);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarHabitacionPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlHabitacion.eliminarHabitacionPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Habitacion> darHabitaciones ()
+	{
+		return sqlHabitacion.darHabitaciones (pmf.getPersistenceManager());
+	}
+	
+	public Habitacion datHabitacionPorId (long id)
+	{
+		return sqlHabitacion.darHabitacionPorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/* *************************
+	 * Método para los HOSTALES
+	 ***************************/
+	
+	public Hostal adicionarHostal(String registroCamaraComercio, String registroSuperIntendencia, Time horaApertura, Time horaCierre)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlHostal.adicionarHostal(pm, id, registroCamaraComercio, registroSuperIntendencia, horaApertura, horaCierre);
+            tx.commit();
+            
+            log.trace ("Inserción del hostal: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Hostal (id, registroCamaraComercio, registroSuperIntendencia, horaApertura, horaCierre);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarHostalPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlHostal.eliminarHostalPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Hostal> darHostales ()
+	{
+		return sqlHostal.darHostales (pmf.getPersistenceManager());
+	}
+	
+	public Hostal darHostalPorId (long id)
+	{
+		return sqlHostal.darHostalPorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/* **************************
+	 * Métodos para los HOTELES
+	 *****************************/
+	
+	public Hotel adicionarHotel(String registroCamaraComercio, String registroSuperIntendencia)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlHotel.adicionarHotel(pm, id, registroCamaraComercio, registroSuperIntendencia);
+            tx.commit();
+            
+            log.trace ("Inserción del hotel: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Hotel (id, registroCamaraComercio, registroSuperIntendencia);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarHotelPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlHotel.eliminarHotelPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Hotel> darHoteles ()
+	{
+		return sqlHotel.darHoteles (pmf.getPersistenceManager());
+	}
+	
+	public Hotel darHotelPorId (long id)
+	{
+		return sqlHotel.darHotelPorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/* ***************************
+	 * Métodos para los inmuebles
+	 *****************************/
+	
+	
+	
 }

@@ -48,7 +48,7 @@ public class SQLHotel {
 		return (Hotel) q.executeUnique();
 	}
 	
-	public List<Hotel> darViviendasUniversitarias (PersistenceManager pm)
+	public List<Hotel> darHoteles (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaHotel ());
 		q.setResultClass(Hotel.class);
