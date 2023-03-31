@@ -1,9 +1,7 @@
 package Persistencia;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,12 +40,12 @@ public class PersistenciaAlohAndes {
 	
 	private static PersistenciaAlohAndes instance;
 	
-	private PersistenceManagerFactory pmf;
-	
 	private List <String> tablas;
 	
 	private SQLUtil sqlUtil;
 	
+	private PersistenceManagerFactory pmf;
+
 	private SQLApartamento sqlApartamento;
 	
 	private SQLCasa sqlCasa;
@@ -1079,6 +1077,11 @@ public class PersistenciaAlohAndes {
 	{
 		return sqlServicio.darServicioPorId (pmf.getPersistenceManager(), id);
 	}
+	
+	/* *****************************************
+	 * Métodos para SERVICIOS ADICIONALES USADOS
+	 *******************************************/
+	
 	
 	
 }
