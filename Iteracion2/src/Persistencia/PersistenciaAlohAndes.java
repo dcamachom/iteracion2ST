@@ -31,7 +31,6 @@ import negocio.ServicioIncluido;
 import negocio.ServicioNoIncluido;
 import negocio.Vecino;
 import negocio.ViviendaUniversitaria;
-import oracle.sql.SQLUtil;
 
 public class PersistenciaAlohAndes {
 	
@@ -173,7 +172,7 @@ public class PersistenciaAlohAndes {
 		sqlViviendaUniversitaria= new SQLViviendaUniversitaria (this);
 	}
 	
-	public String darSequAlohAndes() {
+	public String darSeqAlohAndes() {
 		return tablas.get(0);
 	}
 	
@@ -241,12 +240,14 @@ public class PersistenciaAlohAndes {
 		return tablas.get(16);
 	}
 	
-//	private long nextval ()
-//	{
-//		long resp = sqlUtil.nextval(pmf.getPersistenceManager());
-//        log.trace ("Generando secuencia: " + resp);
-//        return resp;
-//    }
+	private long nextval ()
+	{
+		long resp = sqlUtil.nextval(pmf.getPersistenceManager());
+        log.trace ("Generando secuencia: " + resp);
+        return resp;
+    }
+	
+	
 	
 	private String darDetalleException(Exception e) 
 	{
@@ -258,4 +259,6 @@ public class PersistenciaAlohAndes {
 		}
 		return resp;
 	}
+	
+	
 }
