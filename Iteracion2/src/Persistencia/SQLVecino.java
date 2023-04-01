@@ -49,7 +49,7 @@ public class SQLVecino {
 		return (Vecino) q.executeUnique();
 	}
 	
-	public List<Vecino> darViviendasUniversitarias (PersistenceManager pm)
+	public List<Vecino> darVecinos (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaVecino ());
 		q.setResultClass(Vecino.class);

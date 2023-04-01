@@ -64,7 +64,7 @@ public class SQLServicioIncluido {
 		return (ServicioIncluido) q.executeUnique();
 	}
 	
-	public List<ServicioIncluido> darServiciosNoIncluidos (PersistenceManager pm)
+	public List<ServicioIncluido> darServiciosIncluidos (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioIncluido ());
 		q.setResultClass(ServicioNoIncluido.class);

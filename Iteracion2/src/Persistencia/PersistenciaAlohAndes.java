@@ -1082,6 +1082,456 @@ public class PersistenciaAlohAndes {
 	 * Métodos para SERVICIOS ADICIONALES USADOS
 	 *******************************************/
 	
+	public ServicioAdicionalUsado adicionarServicioAdicionalUsado (long idServicio, long idReserva)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            //long id = nextval ();
+            long tuplasInsertadas = sqlServicioAdicionalUsado.adicionarServicioAdicionalUsado(pm, idServicio, idReserva);
+            tx.commit();
+            
+            log.trace ("Inserción del servicio adicional usado: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new ServicioAdicionalUsado (idServicio, idReserva);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
 	
+	public long eliminarServicioAdicionalUsadoPorIdServicio (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicioAdicionalUsado.eliminarServicioAdicionalUsadoPorIdServicio(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarServicioAdicionalUsadoPorIdReserva (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicioAdicionalUsado.eliminarServicioAdicionalUsadoPorIdReserva(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<ServicioAdicionalUsado> darServiciosAdicionalesUsados()
+	{
+		return sqlServicioAdicionalUsado.darServiciosAdicionalesUsados (pmf.getPersistenceManager());
+	}
+	
+	public ServicioAdicionalUsado darServicioAdicionalesUsadosPorIdReserva (long id)
+	{
+		return sqlServicioAdicionalUsado.darServicioAdicionalUsadoPorIdReserva (pmf.getPersistenceManager(), id);
+	}
+	
+	public ServicioAdicionalUsado darServicioAdicionalesUsadosPorIdServicio (long id)
+	{
+		return sqlServicioAdicionalUsado.darServicioAdicionalUsadoPorIdServicio (pmf.getPersistenceManager(), id);
+	}
+	
+	/* *********************************
+	 * Métodos para SERVICIOS INCLUIDOS
+	 ***********************************/
+	
+	public ServicioIncluido adicionarServicioIncluido (long idServicio, long idReserva)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            //long id = nextval ();
+            long tuplasInsertadas = sqlServicioIncluido.adicionarServicioIncluido(pm, idServicio, idReserva);
+            tx.commit();
+            
+            log.trace ("Inserción del servicio incluido: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new ServicioIncluido (idServicio, idReserva);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarServicioIncluidoPorIdServicio (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicioIncluido.eliminarServicioIncluidoPorIdServicio(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarServicioIncluidoPorIdReserva (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicioIncluido.eliminarServicioIncluidoPorIdReserva(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<ServicioIncluido> darServiciIncluidos()
+	{
+		return sqlServicioIncluido.darServiciosIncluidos (pmf.getPersistenceManager());
+	}
+	
+	public ServicioIncluido darServicioIncluidoPorIdReserva (long id)
+	{
+		return sqlServicioIncluido.darServicioIncluidoPorIdReserva (pmf.getPersistenceManager(), id);
+	}
+	
+	public ServicioIncluido darServicioIncluidoPorIdServicio (long id)
+	{
+		return sqlServicioIncluido.darServicioIncluidoPorIdServicio (pmf.getPersistenceManager(), id);
+	}
+	
+	/* ***************************************
+	 * Métodos para los SERVICIOS NO INCLUIDOS
+	 *****************************************/
+	
+	public ServicioIncluido adicionarServicioNoIncluido (long idServicio, long idReserva)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            //long id = nextval ();
+            long tuplasInsertadas = sqlServicioNoIncluido.adicionarServicioNoIncluido(pm, idServicio, idReserva);
+            tx.commit();
+            
+            log.trace ("Inserción del servicio no incluido: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new ServicioIncluido (idServicio, idReserva);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarServicioNoIncluidoPorIdServicio (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicioNoIncluido.eliminarServicioNoIncluidoPorIdServicio(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarServicioNoIncluidoPorIdReserva (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicioNoIncluido.eliminarServicioNoIncluidoPorIdReserva(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<ServicioNoIncluido> darServiciosNoIncluidos()
+	{
+		return sqlServicioNoIncluido.darServiciosNoIncluidos (pmf.getPersistenceManager());
+	}
+	
+	public ServicioNoIncluido darServicioNoIncluidoPorIdReserva (long id)
+	{
+		return sqlServicioNoIncluido.darServicioNoIncluidoPorIdReserva (pmf.getPersistenceManager(), id);
+	}
+	
+	public ServicioNoIncluido darServicioNoIncluidoPorIdServicio (long id)
+	{
+		return sqlServicioNoIncluido.darServicioNoIncluidoPorIdServicio (pmf.getPersistenceManager(), id);
+	}
+	
+	/* ************************
+	 * Métodos para los VECINOS
+	 **************************/
+	
+	public Vecino adicionarVecino (String nombre, String correo, String telefono)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlVecino.adicionarVecino(pm,id, nombre, correo, telefono);
+            tx.commit();
+            
+            log.trace ("Inserción del vecino: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Vecino (id, nombre, correo, telefono);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarVecinioPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlVecino.eliminarVecinoPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<Vecino> darVecino()
+	{
+		return sqlVecino.darVecinos (pmf.getPersistenceManager());
+	}
+	
+	public Vecino darVecinoPorID (long id)
+	{
+		return sqlVecino.darVecinoPorId (pmf.getPersistenceManager(), id);
+	}
+	
+	/* ********************************************
+	 * Métodos para las VIVIENDAS UNIVERSITARIAS
+	 *********************************************/
+
+	public ViviendaUniversitaria adicionarViviendaUniversitaria ()
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlViviendaUniversitaria.adicionarViviendaUniversitaria(pm,id);
+            tx.commit();
+            
+            log.trace ("Inserción de la ViviendaUniversitaria: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new ViviendaUniversitaria (id);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarViviendaUniversitariaPorId (long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlViviendaUniversitaria.eliminarViviendaUniversitariaPorId(pm, id);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<ViviendaUniversitaria> darViviendaUniversitaria()
+	{
+		return sqlViviendaUniversitaria.darViviendasUniversitarias (pmf.getPersistenceManager());
+	}
+	
+	public ViviendaUniversitaria darViviendaUniversitariaPorID (long id)
+	{
+		return sqlViviendaUniversitaria.darViviendaUniversitariaPorId (pmf.getPersistenceManager(), id);
+	}
 	
 }

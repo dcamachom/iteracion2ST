@@ -48,7 +48,7 @@ public class SQLServicioAdicionalUsado {
         return (long) q.executeUnique();            
 	}
 	
-	public ServicioAdicionalUsado darViviendaUniversitariaPorIdServicio (PersistenceManager pm, long idServicio) 
+	public ServicioAdicionalUsado darServicioAdicionalUsadoPorIdServicio (PersistenceManager pm, long idServicio) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioAdicionalUsado () + " WHERE idServicio = ?");
 		q.setResultClass(ServicioAdicionalUsado.class);
@@ -56,7 +56,7 @@ public class SQLServicioAdicionalUsado {
 		return (ServicioAdicionalUsado) q.executeUnique();
 	}
 	
-	public ServicioAdicionalUsado darViviendaUniversitariaPorIdReserva (PersistenceManager pm, long idReserva) 
+	public ServicioAdicionalUsado darServicioAdicionalUsadoPorIdReserva (PersistenceManager pm, long idReserva) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioAdicionalUsado () + " WHERE idReserva = ?");
 		q.setResultClass(ServicioAdicionalUsado.class);
@@ -64,7 +64,7 @@ public class SQLServicioAdicionalUsado {
 		return (ServicioAdicionalUsado) q.executeUnique();
 	}
 	
-	public List<ServicioAdicionalUsado> darServicioAdicionalUsado (PersistenceManager pm)
+	public List<ServicioAdicionalUsado> darServiciosAdicionalesUsados (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioAdicionalUsado ());
 		q.setResultClass(ServicioNoIncluido.class);
