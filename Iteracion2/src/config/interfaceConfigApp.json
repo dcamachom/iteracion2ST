@@ -1,0 +1,200 @@
+{
+	"title": "Aplicación transaccional de AlohAndes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menu":
+	[
+		{ "menuTitle": "Apartamento",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarApartamento"
+				},
+				{
+					"label": "Listar",
+					"event": "listarApartamento"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarApartamentoPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Casa",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarCasa"
+				},
+				{
+					"label": "Listar",
+					"event": "listarCasa"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarCasaPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Cliente",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarCliente"
+				},
+				{
+					"label": "Listar",
+					"event": "listarCliente"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarClientePorId"
+				},
+				{
+					"label": "Buscar por Nombre",
+					"event": "buscarClientePorNombre"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Habitacion",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarHabitacion"
+				},
+				{
+					"label": "Listar",
+					"event": "listarHabitacion"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarHabitacionPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Hostal",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarHostal"
+				},
+				{
+					"label": "Listar",
+					"event": "listarHostal"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarHostalPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Hotel",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarHotel"
+				},
+				{
+					"label": "Listar",
+					"event": "listarHotel"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarHotelPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Inmueble",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarInmueble"
+				},
+				{
+					"label": "Listar",
+					"event": "listarInmueble"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarInmueblePorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Operador",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarOperador"
+				},
+				{
+					"label": "Listar",
+					"event": "listarOperador"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarOperadorPorId"
+				},
+				{
+					"label": "Buscar por Nombre",
+					"event": "buscarOperadorPorNombre"
+				}
+			]
+		},
+		
+		{ "menuTitle": "PersonaNatural",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarPersonaNatural"
+				},
+				{
+					"label": "Listar",
+					"event": "listarPersonaNatural"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarPersonaNaturalPorId"
+				},
+				{
+					"label": "Buscar por Nombre",
+					"event": "buscarPersonaNaturalPorNombre"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Reserva",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarReserva"
+				},
+				{
+					"label": "Listar",
+					"event": "listarReserva"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarReservaPorId"
+				}
+			]
+		}
+	]
+}
