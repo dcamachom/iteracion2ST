@@ -2,7 +2,7 @@
 	"title": "Aplicación transaccional de AlohAndes",
 	"frameH": 600,
 	"frameW": 800,
-	"bannerPath": "./src/main/resources/config/logo.png",
+	"bannerPath": "./src/main/config/logo.png",
 	"menu":
 	[
 		{ "menuTitle": "Apartamento",
@@ -193,6 +193,181 @@
 				{
 					"label": "Borrar por Id",
 					"event": "eliminarReservaPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Servicio",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarServicio"
+				},
+				{
+					"label": "Listar",
+					"event": "listarServicio"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarServicioPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "ServicioAdicionalUsado",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarServicioAdicionalUsado"
+				},
+				{
+					"label": "Listar",
+					"event": "listarServicioAdicionalUsado"
+				},
+				{
+					"label": "Borrar por IdServicio",
+					"event": "eliminarServicioAdicionalUsadoPorIdServicio"
+				},
+				{
+					"label": "Borrar por idReserva",
+					"event": "eliminarServicioAdicionalUsadoPorIdReserva"
+				}
+			]
+		},
+		
+		{ "menuTitle": "ServicioIncluido",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarServicioIncluido"
+				},
+				{
+					"label": "Listar",
+					"event": "listarServicioIncluido"
+				},
+				{
+					"label": "Borrar por IdServicio",
+					"event": "eliminarServicioIncluidoPorIdServicio"
+				},
+				{
+					"label": "Borrar por idReserva",
+					"event": "eliminarServicioIncluidoPorIdReserva"
+				}
+			]
+		},
+		
+		{ "menuTitle": "ServicioNoIncluido",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarServicioNoIncluido"
+				},
+				{
+					"label": "Listar",
+					"event": "listarServicioNoIncluido"
+				},
+				{
+					"label": "Borrar por IdServicio",
+					"event": "eliminarServicioNoIncluidoPorIdServicio"
+				},
+				{
+					"label": "Borrar por idReserva",
+					"event": "eliminarServicioNoIncluidoPorIdReserva"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Vecino",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarVecino"
+				},
+				{
+					"label": "Listar",
+					"event": "listarVecino"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarVecinoPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "ViviendaUniversitaria",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarViviendaUniversitaria"
+				},
+				{
+					"label": "Listar",
+					"event": "listarViviendaUniversitaria"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminarViviendaUniversitariaPorId"
+				}
+			]
+		},
+		
+		{ "menuTitle": "Mantenimiento",
+		  "options":
+			[
+				{
+					"label": "Mostrar log AlohAndes",
+					"event": "mostrarLogParranderos"
+				},
+				{
+					"label": "Mostrar log datanucleus",
+					"event": "mostrarLogDatanuecleus"
+				},
+				{
+					"label": "Limpiar log de AlohAndes",
+					"event": "limpiarLogParranderos"
+				},
+				{
+					"label": "Limpiar log de datanucleus",
+					"event": "limpiarLogDatanucleus"
+				},
+				{
+					"label": "Limpiar Base de Datos",
+					"event": "limpiarBD"
+				}
+			]
+		},		
+		{ "menuTitle": "Documentación",
+		  "options":
+			[
+				{
+					"label": "Presentación general",
+					"event": "mostrarPresentacionGeneral"
+				},
+				{
+					"label": "Modelo conceptual",
+					"event": "mostrarModeloConceptual"
+				},
+				{
+					"label": "Esquema de la BD",
+					"event": "mostrarEsquemaBD"
+				},
+				{
+					"label": "Script creación de la BD",
+					"event": "mostrarScriptBD"
+				},
+				{
+					"label": "Arquitectura de referencia",
+					"event": "mostrarArqRef"
+				},
+				{
+					"label": "Javadoc Parranderos",
+					"event": "mostrarJavadoc"
 				}
 			]
 		}
