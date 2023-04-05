@@ -6,10 +6,6 @@ public interface VOPersonaNatural {
 	 * Métodos
 	 */
 	
-	public long getId();
-	
-	public String getNombrePersona();
-	
 	public String getCorreo();
 	
 	public String getTelefono();

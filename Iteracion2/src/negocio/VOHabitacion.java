@@ -6,8 +6,6 @@ public interface VOHabitacion {
 	 * Métodos
 	 */
 	
-	public long getId();
-	
 	public boolean getCompartida();
 	
 	public String getTipo ();

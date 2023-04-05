@@ -1,13 +1,13 @@
 package negocio;
 
-public class PersonaNatural implements VOPersonaNatural{
+import java.util.List;
+
+public class PersonaNatural extends Operador implements VOPersonaNatural {
 
 	/*
 	 * Atributos
 	 */
 	
-	private long id;
-	private String nombrePersona;
 	private String correo;
 	private String telefono;
 	
@@ -19,8 +19,7 @@ public class PersonaNatural implements VOPersonaNatural{
 	 * Constructor por defecto
 	 */
 	public PersonaNatural() {
-		this.id=0;
-		this.nombrePersona="";
+		super();
 		this.telefono="";
 		this.correo="";
 	}
@@ -32,31 +31,22 @@ public class PersonaNatural implements VOPersonaNatural{
 	 * @param correo
 	 * @param telefono
 	 */
-	public PersonaNatural(long id, String nombrePersona, String correo, String telefono) {
-		this.id=id;
-		this.nombrePersona=nombrePersona;
+	public PersonaNatural(long id, String nombre, String tipoOperador, String correo, String telefono) {
+		super(id, nombre, tipoOperador);
 		this.telefono=telefono;
 		this.correo=correo;
 	}
-	
+
 	@Override
 	public long getId() {
 		// TODO Auto-generated method stub
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id=id;
+		return super.getId();
 	}
 
 	@Override
-	public String getNombrePersona() {
+	public void setId(long id) {
 		// TODO Auto-generated method stub
-		return nombrePersona;
-	}
-	
-	public void setNombrePersona(String nombrePersona) {
-		this.nombrePersona=nombrePersona;
+		super.setId(id);
 	}
 
 	@Override
@@ -79,10 +69,48 @@ public class PersonaNatural implements VOPersonaNatural{
 		this.telefono=telefono;
 	}
 	
-	public String toString() 
-	{
-		return "Persona natural [id=" + id + ", Nombre=" + nombrePersona 
-				+ ", Telefono=" +telefono+", Correo="+correo+"]";
+	@Override
+	public String getTipoOperador() {
+		// TODO Auto-generated method stub
+		return super.getTipoOperador();
 	}
+
+	@Override
+	public void setTipoOperador(String tipoOperador) {
+		// TODO Auto-generated method stub
+		super.setTipoOperador(tipoOperador);
+	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return super.getNombre();
+	}
+
+	@Override
+	public void setNombre(String nombre) {
+		// TODO Auto-generated method stub
+		super.setNombre(nombre);
+	}
+
+	@Override
+	public List<Object[]> getInmuebles() {
+		// TODO Auto-generated method stub
+		return super.getInmuebles();
+	}
+
+	@Override
+	public void setInmuebles(List<Object[]> inmuebles) {
+		// TODO Auto-generated method stub
+		super.setInmuebles(inmuebles);
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+
+	
 
 }

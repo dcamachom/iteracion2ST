@@ -1,5 +1,8 @@
 package negocio;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Operador implements VOOperador{
 
 	/*
@@ -9,6 +12,7 @@ public class Operador implements VOOperador{
 	private long id;
 	private String nombre;
 	private String tipoOperador;
+	private List<Object[]> inmuebles;
 	
 	/*
 	 * Métodos
@@ -22,6 +26,7 @@ public class Operador implements VOOperador{
 		this.id=0;
 		this.nombre="";
 		this.tipoOperador="";
+		inmuebles= new LinkedList<Object[]>();
 	}
 	
 	/**
@@ -34,6 +39,7 @@ public class Operador implements VOOperador{
 		this.id=id;
 		this.nombre=nombre;
 		this.tipoOperador=tipoOperador;
+		inmuebles= new LinkedList<Object[]>();
 	}
 	
 	public long getId() {
@@ -60,6 +66,14 @@ public class Operador implements VOOperador{
 		this.nombre=nombre;
 	}
 	
+	public List<Object[]> getInmuebles() {
+		return inmuebles;
+	}
+
+	public void setInmuebles(List<Object[]> inmuebles) {
+		this.inmuebles = inmuebles;
+	}
+
 	public String toString() 
 	{
 		return "Operador [id=" + id + ", Nombre=" + nombre + ", Tipo Operador=" + tipoOperador +"]";

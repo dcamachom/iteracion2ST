@@ -1,6 +1,8 @@
 package negocio;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Reserva implements VOReserva{
 	
@@ -13,6 +15,7 @@ public class Reserva implements VOReserva{
 	private Date fechaFin;
 	private long idCliente;
 	private long idInmueble;
+	private List<Object[]> serviciosUsados;
 	
 	/*
 	 * Métodos
@@ -28,6 +31,7 @@ public class Reserva implements VOReserva{
 		this.fechaFin= new Date(0);
 		this.idCliente=0;
 		this.idInmueble=0;	
+		serviciosUsados= new LinkedList<Object[]>();
 	}
 	
 	/**
@@ -39,6 +43,7 @@ public class Reserva implements VOReserva{
 		 this.fechaFin=fechaFin;
 		 this.idCliente=idCliente;
 		 this.idInmueble=idInmueble;
+		 serviciosUsados= new LinkedList<Object[]>();
 	 }
 
 	public long getId() {
@@ -79,6 +84,14 @@ public class Reserva implements VOReserva{
 	
 	public void setIdInmueble(long idInmueble) {
 		this.idInmueble=idInmueble;
+	}
+
+	public List<Object[]> getServiciosUsados() {
+		return serviciosUsados;
+	}
+
+	public void setServiciosUsados(List<Object[]> serviciosUsados) {
+		this.serviciosUsados = serviciosUsados;
 	}
 
 	public String toString() 

@@ -7,4 +7,6 @@ public interface VOViviendaUniversitaria {
 	 */
 	
 	public long getId();
+	
+	public int getCantHabitaciones();
 }

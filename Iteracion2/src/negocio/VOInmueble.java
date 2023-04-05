@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 public interface VOInmueble {
 	
 	/*
@@ -10,7 +12,13 @@ public interface VOInmueble {
 	
 	public int getCostoBase();
 	
-	public boolean getDisponible();
+	public long getIdOperador();
+	
+	public List<Object[]> getServiciosIncluidos();
+	
+	public List<Object[]> getServiciosNoIncluidos();
+	
+	public List<Object[]> getReservas();
 	
 	@Override
 	public String toString();

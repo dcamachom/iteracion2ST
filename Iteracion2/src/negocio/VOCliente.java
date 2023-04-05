@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 public interface VOCliente {
 	
 	public long getId();
@@ -11,6 +13,8 @@ public interface VOCliente {
 	public String getTelefono();
 	
 	public String getTipoMiembro();
+	
+	public List<Object[]> getReservas();
 	
 	@Override
 	public String toString();

@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.Date;
+import java.util.List;
 
 public interface VOReserva {
 
@@ -16,6 +17,8 @@ public interface VOReserva {
 	public long getIdCliente();
 	
 	public long getIdInmueble();
+	
+	public List<Object[]> getServiciosUsados();
 	
 	public String toString();
 }

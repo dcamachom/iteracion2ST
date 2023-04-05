@@ -12,8 +12,6 @@ public interface VOServicio {
 	
 	public String getDescripcion();
 	
-	public int getValorAdicional();
-	
 	@Override
 	public String toString();
 

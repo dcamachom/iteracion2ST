@@ -9,7 +9,6 @@ public class Servicio implements VOServicio {
 	private long id;
 	private String nombre;
 	private String descripcion;
-	private int valorAdicional;
 	
 	/*
 	 * Métodos
@@ -22,7 +21,6 @@ public class Servicio implements VOServicio {
 		this.id=0;
 		this.nombre="";
 		this.descripcion="";
-		this.valorAdicional=0;
 	}
 	
 	/**
@@ -37,7 +35,6 @@ public class Servicio implements VOServicio {
 		this.id=id;
 		this.nombre=nombre;
 		this.descripcion=descripcion;
-		this.valorAdicional=valorAdicional;
 	}
 	
 	public long getId() {
@@ -64,18 +61,11 @@ public class Servicio implements VOServicio {
 		this.descripcion=descripcion;
 	}
 
-	public int getValorAdicional() {
-		return valorAdicional;
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 	
-	public void setValorAdicional(int valorAdicional) {
-		this.valorAdicional=valorAdicional;
-	}
-	
-	public String toString() 
-	{
-		return "Reserva [id=" + id + ", Nombre=" + nombre + ", Descripción=" + descripcion +
-				 ", Valor adicional= " + valorAdicional+"]";
-	}
 
 }

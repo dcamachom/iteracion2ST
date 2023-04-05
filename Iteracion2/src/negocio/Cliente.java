@@ -1,20 +1,20 @@
 package negocio;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Cliente implements VOCliente{
 	
 	/*
 	 * Atributos
 	 */
 	
-	public long id;
-	
-	public String nombre;
-	
-	public String correo;
-	
-	public String telefono;
-	
-	public String tipoMiembro;
+	private long id;
+	private String nombre;
+	private String correo;
+	private String telefono;
+	private String tipoMiembro;
+	private List<Object[]> reservas;
 	
 	/*
 	 * Métodos
@@ -30,6 +30,7 @@ public class Cliente implements VOCliente{
 		this.correo="";
 		this.telefono="";
 		this.tipoMiembro="";
+		reservas = new LinkedList<Object []> ();
 	}
 	
 	/**
@@ -47,6 +48,7 @@ public class Cliente implements VOCliente{
 		this.correo=correo;
 		this.telefono=telefono;
 		this.tipoMiembro=tipoMiembro;
+		reservas = new LinkedList<Object []> ();
 		
 	}
 
@@ -89,6 +91,15 @@ public class Cliente implements VOCliente{
 	public void setTipoMiembro (String tipoMiembro) {
 		this.tipoMiembro=tipoMiembro;
 	}
+	
+	public List<Object[]> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Object[]> reservas) {
+		this.reservas = reservas;
+	}
+
 	
 	public String toString() 
 	{

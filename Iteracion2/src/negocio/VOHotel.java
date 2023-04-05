@@ -5,8 +5,8 @@ public interface VOHotel {
 	/*
 	 * Métodos
 	 */
-
-	public long getId();
+	
+	public int getCantHabitaciones();
 	
 	public String getRegistroCamaraComercio();
 	

@@ -11,4 +11,5 @@ module Iteracion2 {
 	requires log4j;
 	requires gson;
 	requires ojdbc8;
+	requires java.desktop;
 }

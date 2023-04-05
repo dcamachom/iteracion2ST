@@ -1,12 +1,13 @@
 package negocio;
 
-public class Habitacion  implements VOHabitacion{
+import java.util.List;
+
+public class Habitacion  extends Inmueble implements VOHabitacion{
 
 	/*
 	 * Atributos
 	 */
 	
-	private long id;
 	private int capacidad;
 	private boolean compartida;
 	private String tipo;
@@ -19,6 +20,7 @@ public class Habitacion  implements VOHabitacion{
 	 * Constructor por defecto
 	 */
 	public Habitacion() {
+		super();
 		this.capacidad=0;
 		this.compartida=false;
 		this.tipo="";
@@ -30,8 +32,8 @@ public class Habitacion  implements VOHabitacion{
 	 * @param compartida
 	 * @param tipo
 	 */
-	public Habitacion(long id,int capacidad, boolean compartida, String tipo) {
-		this.id=id;
+	public Habitacion(long id, int costoBase, long idOperador,int capacidad, boolean compartida, String tipo) {
+		super(id, costoBase, idOperador);
 		this.capacidad=capacidad;
 		this.compartida=compartida;
 		this.tipo=tipo;
@@ -40,11 +42,13 @@ public class Habitacion  implements VOHabitacion{
 	@Override
 	public long getId() {
 		// TODO Auto-generated method stub
-		return id;
+		return super.getId();
 	}
-	
+
+	@Override
 	public void setId(long id) {
-		this.id=id;
+		// TODO Auto-generated method stub
+		super.setId(id);
 	}
 
 	@Override
@@ -77,9 +81,72 @@ public class Habitacion  implements VOHabitacion{
 		this.capacidad=capacidad;
 	}
 	
-	public String toString() {
-		return "Habitacion [id=" + id +", compartida=" +compartida+ ", Tipo=" +tipo+ 
-				", capacidad=" +capacidad +"]";
+	@Override
+	public int getCostoBase() {
+		// TODO Auto-generated method stub
+		return super.getCostoBase();
 	}
+
+	@Override
+	public void setCostoBase(int costoBase) {
+		// TODO Auto-generated method stub
+		super.setCostoBase(costoBase);
+	}
+
+	@Override
+	public long getIdOperador() {
+		// TODO Auto-generated method stub
+		return super.getIdOperador();
+	}
+
+	@Override
+	public void setIdOperador(long idOperador) {
+		// TODO Auto-generated method stub
+		super.setIdOperador(idOperador);
+	}
+
+	@Override
+	public List<Object[]> getServiciosIncluidos() {
+		// TODO Auto-generated method stub
+		return super.getServiciosIncluidos();
+	}
+
+	@Override
+	public void setServiciosIncluidos(List<Object[]> serviciosIncluidos) {
+		// TODO Auto-generated method stub
+		super.setServiciosIncluidos(serviciosIncluidos);
+	}
+
+	@Override
+	public List<Object[]> getServiciosNoIncluidos() {
+		// TODO Auto-generated method stub
+		return super.getServiciosNoIncluidos();
+	}
+
+	@Override
+	public void setServiciosNoIncluidos(List<Object[]> serviciosNoIncluidos) {
+		// TODO Auto-generated method stub
+		super.setServiciosNoIncluidos(serviciosNoIncluidos);
+	}
+
+	@Override
+	public List<Object[]> getReservas() {
+		// TODO Auto-generated method stub
+		return super.getReservas();
+	}
+
+	@Override
+	public void setReservas(List<Object[]> reservas) {
+		// TODO Auto-generated method stub
+		super.setReservas(reservas);
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+
+	
 
 }

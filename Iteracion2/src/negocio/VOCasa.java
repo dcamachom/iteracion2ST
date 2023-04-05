@@ -6,8 +6,6 @@ public interface VOCasa {
 	 * Métodos
 	 */
 	
-	public long getId();
-	
 	public int getCantHabitaciones();
 	
 	public String getSeguro();

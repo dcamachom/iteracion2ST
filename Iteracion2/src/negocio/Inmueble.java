@@ -1,5 +1,8 @@
 package negocio;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Inmueble implements VOInmueble{
 
 	/*
@@ -7,7 +10,10 @@ public class Inmueble implements VOInmueble{
 	 */
 	private long id;
 	private int costoBase;
-	private boolean disponible;
+	private long idOperador;
+	private List<Object []> serviciosIncluidos;
+	private List<Object[]> serviciosNoIncluidos;
+	private List<Object[]> reservas;
 	
 	/*
 	 * Métodos
@@ -19,7 +25,10 @@ public class Inmueble implements VOInmueble{
 	public Inmueble() {
 		this.id=0;
 		this.costoBase=0;
-		this.disponible=false;
+		this.idOperador=0;
+		serviciosIncluidos= new LinkedList<Object[]>();
+		serviciosNoIncluidos= new LinkedList<Object[]>();
+		reservas= new LinkedList<Object[]>();
 	}
 	
 	/**
@@ -28,10 +37,13 @@ public class Inmueble implements VOInmueble{
 	 * @param costoBase
 	 * @param disponible
 	 */
-	public Inmueble(long id, int costoBase, boolean disponible) {
+	public Inmueble(long id, int costoBase, long idOperador) {
 		this.id=id;
 		this.costoBase=costoBase;
-		this.disponible=disponible;
+		this.idOperador=idOperador;
+		serviciosIncluidos= new LinkedList<Object[]>();
+		serviciosNoIncluidos= new LinkedList<Object[]>();
+		reservas= new LinkedList<Object[]>();
 	}
 	
 	@Override
@@ -53,20 +65,42 @@ public class Inmueble implements VOInmueble{
 	public void setCostoBase(int costoBase) {
 		this.costoBase=costoBase;
 	}
+	
+	public long getIdOperador() {
+		return idOperador;
+	}
 
-	@Override
-	public boolean getDisponible() {
-		// TODO Auto-generated method stub
-		return disponible;
+	public void setIdOperador(long idOperador) {
+		this.idOperador = idOperador;
 	}
-	
-	public void setDisponible(boolean disponible) {
-		this.disponible=disponible;
+
+	public List<Object[]> getServiciosIncluidos() {
+		return serviciosIncluidos;
 	}
-	
+
+	public void setServiciosIncluidos(List<Object[]> serviciosIncluidos) {
+		this.serviciosIncluidos = serviciosIncluidos;
+	}
+
+	public List<Object[]> getServiciosNoIncluidos() {
+		return serviciosNoIncluidos;
+	}
+
+	public void setServiciosNoIncluidos(List<Object[]> serviciosNoIncluidos) {
+		this.serviciosNoIncluidos = serviciosNoIncluidos;
+	}
+
+	public List<Object[]> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Object[]> reservas) {
+		this.reservas = reservas;
+	}
+
 	public String toString() 
 	{
-		return "Inmueble [id=" + id + ", Costo base="+ costoBase + ", Disponible="+ disponible+ "]";
+		return "Inmueble [id=" + id + ", Costo base="+ costoBase + "]";
 	}
 
 }
