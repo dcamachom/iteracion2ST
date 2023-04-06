@@ -920,7 +920,7 @@ public class PersistenciaAlohAndes {
 	 * Método para las RESERVAS
 	 ****************************/
 	
-	public Reserva adicionarReserva(Date fechaInicio, Date fechaFin, long idCliente, long idInmueble)
+	public Reserva adicionarReserva(Date fechaInicio, Date fechaFin, int costoTotal, long idCliente, long idInmueble)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -928,12 +928,12 @@ public class PersistenciaAlohAndes {
         {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlReserva.adicionarReserva(pm, id, fechaInicio, fechaFin, idCliente, idInmueble);
+            long tuplasInsertadas = sqlReserva.adicionarReserva(pm, id, fechaInicio, fechaFin, costoTotal, idCliente, idInmueble);
             tx.commit();
             
             log.trace ("Inserción del reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Reserva (id,fechaInicio, fechaFin, idCliente, idInmueble);
+            return new Reserva (id,fechaInicio, fechaFin, costoTotal, idCliente, idInmueble);
         }
         catch (Exception e)
         {

@@ -14,6 +14,8 @@ public interface VOReserva {
 	
 	public Date getFechaFin();
 	
+	public int getCostoTotal();
+	
 	public long getIdCliente();
 	
 	public long getIdInmueble();

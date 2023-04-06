@@ -328,10 +328,10 @@ public class AlohAndes {
 	/**
 	 * Métodos para manejar las Reservas
 	 */
-	public Reserva adicionarReserva (Date fechaInicio, Date fechaFin, long idCliente, long idInmueble)
+	public Reserva adicionarReserva (Date fechaInicio, Date fechaFin, int costoTotal, long idCliente, long idInmueble)
 	{
         log.info ("Adicionando Reserva" );
-        Reserva reserva = pa.adicionarReserva(fechaInicio, fechaFin, idCliente, idInmueble);		
+        Reserva reserva = pa.adicionarReserva(fechaInicio, fechaFin, costoTotal, idCliente, idInmueble);		
         log.info ("Adicionando Reserva: " + reserva);
         return reserva;
 	}

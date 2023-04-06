@@ -29,9 +29,9 @@ public class SQLReserva {
 		this.pa=pa;
 	}
 	
-	public long adicionarReserva(PersistenceManager pm, long id, Date fechaInicio, Date fechaFin, long idCliente, long idInmueble) {
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, fechaInicio, fechaFin, idCliente, idInmueble) values (?, ?, ?, ?, ?)");
-        q.setParameters(id, fechaInicio, fechaFin, idCliente, idInmueble);
+	public long adicionarReserva(PersistenceManager pm, long id, Date fechaInicio, Date fechaFin, int costoTotal, long idCliente, long idInmueble) {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, fechaInicio, fechaFin, costoTotal, idCliente, idInmueble) values (?, ?, ?, ?, ?, ?)");
+        q.setParameters(id, fechaInicio, fechaFin, costoTotal, idCliente, idInmueble);
         return (long) q.executeUnique();
 	}
 	
