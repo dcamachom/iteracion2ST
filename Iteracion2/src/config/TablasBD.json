@@ -15,10 +15,8 @@
 		"PersonaNatural",
 		"Reserva",
 		"Servicio",
-		"ServicioAdicionalUsado",
-		"ServicioIncluido",
-		"ServicioNoIncluido",
-		"Vecino",
+		"ServicioInmueble",
+		"ServicioUsado",
 		"ViviendaUniversitaria"
 	]
 }

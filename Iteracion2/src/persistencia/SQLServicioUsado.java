@@ -27,29 +27,29 @@ public class SQLServicioUsado {
 		this.pa=pa;
 	}
 	
-	public long adicionarServicioAdicionalUsado(PersistenceManager pm, long idServicio, long idReserva) {
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaServicioAdicionalUsado () + "(idServicio, idReserva) values (?, ?)");
+	public long adicionarServicioAdicionalUsado(PersistenceManager pm, long idServicio, long idReserva, long idInmueble) {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaServicioUsado () + "(Servicio, Reserva, Inmueble) values (?, ?)");
         q.setParameters(idServicio, idReserva);
         return (long) q.executeUnique();
 	}
 	
 	public long eliminarServicioAdicionalUsadoPorIdServicio (PersistenceManager pm, long idServicio)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaServicioAdicionalUsado () + " WHERE idServicio = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaServicioUsado () + " WHERE idServicio = ?");
         q.setParameters(idServicio);
         return (long) q.executeUnique();            
 	}
 	
 	public long eliminarServicioAdicionalUsadoPorIdReserva (PersistenceManager pm, long idReserva)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaServicioAdicionalUsado () + " WHERE idReserva = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaServicioUsado () + " WHERE idReserva = ?");
         q.setParameters(idReserva);
         return (long) q.executeUnique();            
 	}
 	
 	public ServicioUsado darServicioAdicionalUsadoPorIdServicio (PersistenceManager pm, long idServicio) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioAdicionalUsado () + " WHERE idServicio = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioUsado () + " WHERE idServicio = ?");
 		q.setResultClass(ServicioUsado.class);
 		q.setParameters(idServicio);
 		return (ServicioUsado) q.executeUnique();
@@ -57,7 +57,7 @@ public class SQLServicioUsado {
 	
 	public ServicioUsado darServicioAdicionalUsadoPorIdReserva (PersistenceManager pm, long idReserva) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioAdicionalUsado () + " WHERE idReserva = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioUsado () + " WHERE idReserva = ?");
 		q.setResultClass(ServicioUsado.class);
 		q.setParameters(idReserva);
 		return (ServicioUsado) q.executeUnique();
@@ -65,10 +65,8 @@ public class SQLServicioUsado {
 	
 	public List<ServicioUsado> darServiciosAdicionalesUsados (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioAdicionalUsado ());
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaServicioUsado ());
 		q.setResultClass(ServicioUsado.class);
 		return (List<ServicioUsado>) q.executeList();
 	}
-
-
 }

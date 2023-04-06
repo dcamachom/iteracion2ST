@@ -7,6 +7,7 @@ public class ServicioUsado implements VOServicioUsado{
 	 */
 	private long idServicio;
 	private long idReserva;
+	private long idInmueble;
 	
 	/*
 	 * Métodos
@@ -18,6 +19,7 @@ public class ServicioUsado implements VOServicioUsado{
 	public ServicioUsado() {
 		this.idServicio=0;
 		this.idReserva=0;
+		this.idInmueble=0;
 	}
 	
 	/**
@@ -25,9 +27,10 @@ public class ServicioUsado implements VOServicioUsado{
 	 * @param idServicio
 	 * @param idReserva
 	 */
-	public ServicioUsado(long idServicio, long idReserva) {
+	public ServicioUsado(long idServicio, long idReserva, long idInmueble) {
 		this.idReserva=idReserva;
 		this.idServicio=idServicio;
+		this.idInmueble=idInmueble;
 	}
 	
 	@Override
@@ -50,6 +53,14 @@ public class ServicioUsado implements VOServicioUsado{
 		this.idReserva=idReserva;
 	}
 	
+	public long getIdInmueble() {
+		return idInmueble;
+	}
+
+	public void setIdInmueble(long idInmueble) {
+		this.idInmueble = idInmueble;
+	}
+
 	public String toString() 
 	{
 		return "Servicios adicionales usados [id Reserva=" + idReserva+

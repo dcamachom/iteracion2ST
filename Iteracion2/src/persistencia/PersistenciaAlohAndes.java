@@ -26,6 +26,7 @@ import negocio.Operador;
 import negocio.PersonaNatural;
 import negocio.Reserva;
 import negocio.Servicio;
+import negocio.ServicioInmueble;
 import negocio.ServicioUsado;
 import negocio.ViviendaUniversitaria;
 
@@ -65,6 +66,8 @@ public class PersistenciaAlohAndes {
 	
 	private SQLServicio sqlServicio;
 	
+	private SQLServicioInmueble sqlServicioInmueble;
+	
 	private SQLServicioUsado sqlServicioUsado;
 	
 	private SQLViviendaUniversitaria sqlViviendaUniversitaria;
@@ -80,26 +83,26 @@ public class PersistenciaAlohAndes {
 		
 		tablas= new LinkedList<String>();
 		tablas.add("AlohAndes_sequence");
-		tablas.add("Apartamento");
-		tablas.add("Casa");
-		tablas.add("Cliente");
-		tablas.add("Habitación");
-		tablas.add("Hostal");
-		tablas.add("Hotel");
-		tablas.add("Inmueble");
-		tablas.add("Operador");
-		tablas.add("PersonaNatural");
-		tablas.add("Reserva");
-		tablas.add("Servicio");
-		tablas.add("ServicioUsado");
-		tablas.add("ServicioInmueble");
-		tablas.add("ViviendaUniversitaria");
+		tablas.add("APARTAMENTO");
+		tablas.add("CASA");
+		tablas.add("CLIENTE");
+		tablas.add("HABITACION");
+		tablas.add("HOSTAL");
+		tablas.add("HOTEL");
+		tablas.add("INMUEBLE");
+		tablas.add("OPERADOR");
+		tablas.add("PERSONANATURAL");
+		tablas.add("RESERVA");
+		tablas.add("SERVICIO");
+		tablas.add("SERVICIOINMUEBLE");
+		tablas.add("SERVICIOUSADO");
+		tablas.add("VIVIENDAUNIVERSITARIA");
 		
 	}
 	
 	private PersistenciaAlohAndes (JsonObject tableConfig)
 	{
-		//crearClasesSQL();
+		crearClasesSQL();
 		tablas= leerNombresTablas(tableConfig);
 		
 		String unidadPersistencia= tableConfig.get("unidadPersistencia").getAsString();
@@ -205,25 +208,15 @@ public class PersistenciaAlohAndes {
 	public String darTablaServicio() {
 		return tablas.get(11);
 	}
-	
-	public String darTablaServicioAdicionalUsado() {
+	public String darTablaServicioInmueble() {
 		return tablas.get(12);
 	}
-	
-	public String darTablaServicioIncluido() {
+	public String darTablaServicioUsado() {
 		return tablas.get(13);
 	}
 	
-	public String darTablaServicioNoIncluido() {
-		return tablas.get(14);
-	}
-	
-	public String darTablaVecino() {
-		return tablas.get(15);
-	}
-	
 	public String darTablaViviendaUniversitaria() {
-		return tablas.get(16);
+		return tablas.get(14);
 	}
 	
 	private long nextval ()
@@ -312,7 +305,7 @@ public class PersistenciaAlohAndes {
 		return sqlApartamento.darApartamentos (pmf.getPersistenceManager());
 	}
 	
-	public Apartamento darApartamentosPorId (long id)
+	public Apartamento darApartamentoPorId (long id)
 	{
 		return sqlApartamento.darApartamentoPorId (pmf.getPersistenceManager(), id);
 	}
@@ -383,12 +376,15 @@ public class PersistenciaAlohAndes {
 	{
 		return sqlCasa.darCasas (pmf.getPersistenceManager());
 	}
-	
+	public Casa darCasaPorId (long id)
+	{
+		return sqlCasa.darCasaPorId (pmf.getPersistenceManager(), id);
+	}
 	/* **********************************
 	 * Métodos para manejar los CLIENTES
 	 * *********************************/
 
-	public Cliente adicionarClientes(String nombre, String correo, String telefono, String tipoMiembro)
+	public Cliente adicionarCliente(String nombre, String correo, String telefono, String tipoMiembro)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -555,7 +551,7 @@ public class PersistenciaAlohAndes {
 		return sqlHabitacion.darHabitaciones (pmf.getPersistenceManager());
 	}
 	
-	public Habitacion datHabitacionPorId (long id)
+	public Habitacion darHabitacionPorId (long id)
 	{
 		return sqlHabitacion.darHabitacionPorId (pmf.getPersistenceManager(), id);
 	}
@@ -766,7 +762,7 @@ public class PersistenciaAlohAndes {
         }
 	}
 	
-	public List<Inmueble> darInmueble ()
+	public List<Inmueble> darInmuebles ()
 	{
 		return sqlInmueble.darInmuebles (pmf.getPersistenceManager());
 	}
@@ -838,7 +834,7 @@ public class PersistenciaAlohAndes {
         }
 	}
 	
-	public List<Operador> darOperador ()
+	public List<Operador> darOperadores ()
 	{
 		return sqlOperador.darOperadores (pmf.getPersistenceManager());
 	}
@@ -910,7 +906,7 @@ public class PersistenciaAlohAndes {
         }
 	}
 	
-	public List<PersonaNatural> darPersonaNatural ()
+	public List<PersonaNatural> darPersonasNaturales ()
 	{
 		return sqlPersonaNatural.darPersonasNaturales (pmf.getPersistenceManager());
 	}
@@ -982,7 +978,7 @@ public class PersistenciaAlohAndes {
         }
 	}
 	
-	public List<Reserva> darReserva ()
+	public List<Reserva> darReservas ()
 	{
 		return sqlReserva.darReservas (pmf.getPersistenceManager());
 	}
@@ -1007,7 +1003,7 @@ public class PersistenciaAlohAndes {
             long tuplasInsertadas = sqlServicio.adicionarServicio(pm, id, nombre, descripcion, valorAdicional);
             tx.commit();
             
-            log.trace ("Inserción del reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserción del servicio: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
             return new Servicio (id,nombre, descripcion, valorAdicional);
         }
@@ -1054,7 +1050,7 @@ public class PersistenciaAlohAndes {
         }
 	}
 	
-	public List<Servicio> darServicio()
+	public List<Servicio> darServicios()
 	{
 		return sqlServicio.darServicios (pmf.getPersistenceManager());
 	}
@@ -1063,12 +1059,11 @@ public class PersistenciaAlohAndes {
 	{
 		return sqlServicio.darServicioPorId (pmf.getPersistenceManager(), id);
 	}
+	/* *************************
+	 * Método para los SERVICIOS INMUEBLE
+	 **************************/
 	
-	/* *****************************************
-	 * Métodos para SERVICIOS ADICIONALES USADOS
-	 *******************************************/
-	
-	public ServicioUsado adicionarServicioUsado (long idServicio, long idReserva)
+	public ServicioInmueble adicionarServicioInmueble(long idServicio, long idInmueble, boolean incluido, int valorAdicional)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1076,12 +1071,83 @@ public class PersistenciaAlohAndes {
         {
             tx.begin();
             //long id = nextval ();
-            long tuplasInsertadas = sqlServicioUsado.adicionarServicioAdicionalUsado(pm, idServicio, idReserva);
+            long tuplasInsertadas = sqlServicioInmueble.adicionarServicioInmueble(pm, idServicio, idInmueble, incluido, valorAdicional);
+            tx.commit();
+            
+            log.trace ("Inserción del servicio: " + idServicio + "en el inmueble: "+ idInmueble+ ":" + tuplasInsertadas + " tuplas insertadas");
+            
+            return new ServicioInmueble (incluido, valorAdicional, idServicio, idInmueble);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public long eliminarServicioInmueblePorId (long idServicio, long idInmueble) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlServicioInmueble.eliminarServicioInmueblePorId(pm, idServicio, idInmueble);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public List<ServicioInmueble> darServiciosInmueble()
+	{
+		return sqlServicioInmueble.darServiciosInmueble (pmf.getPersistenceManager());
+	}
+	
+	public ServicioInmueble darServicioInmueblePorId (long idServicio, long idInmueble)
+	{
+		return sqlServicioInmueble.darServicioInmueblePorId (pmf.getPersistenceManager(), idServicio, idInmueble);
+	}
+	/* *****************************************
+	 * Métodos para SERVICIOS ADICIONALES USADOS
+	 *******************************************/
+	
+	public ServicioUsado adicionarServicioUsado (long idServicio, long idReserva, long idInmueble)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            //long id = nextval ();
+            long tuplasInsertadas = sqlServicioUsado.adicionarServicioAdicionalUsado(pm, idServicio, idReserva, idInmueble);
             tx.commit();
             
             log.trace ("Inserción del servicio adicional usado: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new ServicioUsado (idServicio, idReserva);
+            return new ServicioUsado (idServicio, idReserva, idInmueble);
         }
         catch (Exception e)
         {
@@ -1158,12 +1224,12 @@ public class PersistenciaAlohAndes {
 		return sqlServicioUsado.darServiciosAdicionalesUsados (pmf.getPersistenceManager());
 	}
 	
-	public ServicioUsado darServicioUsadosPorIdReserva (long id)
+	public ServicioUsado darServiciosUsadosPorIdReserva (long id)
 	{
 		return sqlServicioUsado.darServicioAdicionalUsadoPorIdReserva (pmf.getPersistenceManager(), id);
 	}
 	
-	public ServicioUsado darServicioUsadosPorIdServicio (long id)
+	public ServicioUsado darServiciosUsadosPorIdServicio (long id)
 	{
 		return sqlServicioUsado.darServicioAdicionalUsadoPorIdServicio (pmf.getPersistenceManager(), id);
 	}
@@ -1236,12 +1302,12 @@ public class PersistenciaAlohAndes {
         }
 	}
 	
-	public List<ViviendaUniversitaria> darViviendaUniversitaria()
+	public List<ViviendaUniversitaria> darViviendasUniversitarias()
 	{
 		return sqlViviendaUniversitaria.darViviendasUniversitarias (pmf.getPersistenceManager());
 	}
 	
-	public ViviendaUniversitaria darViviendaUniversitariaPorID (long id)
+	public ViviendaUniversitaria darViviendaUniversitariaPorId (long id)
 	{
 		return sqlViviendaUniversitaria.darViviendaUniversitariaPorId (pmf.getPersistenceManager(), id);
 	}

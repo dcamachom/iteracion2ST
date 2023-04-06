@@ -215,86 +215,41 @@
 			]
 		},
 		
-		{ "menuTitle": "ServicioAdicionalUsado",
+		{ "menuTitle": "ServicioUsado",
 		  "options":
 			[
 				{
 					"label": "Adicionar",
-					"event": "adicionarServicioAdicionalUsado"
+					"event": "adicionarServicioUsado"
 				},
 				{
 					"label": "Listar",
-					"event": "listarServicioAdicionalUsado"
+					"event": "listarServicioUsado"
 				},
 				{
 					"label": "Borrar por IdServicio",
-					"event": "eliminarServicioAdicionalUsadoPorIdServicio"
+					"event": "eliminarServicioUsadoPorIdServicio"
 				},
 				{
 					"label": "Borrar por idReserva",
-					"event": "eliminarServicioAdicionalUsadoPorIdReserva"
+					"event": "eliminarServicioUsadoPorIdReserva"
 				}
 			]
 		},
-		
-		{ "menuTitle": "ServicioIncluido",
+		{ "menuTitle": "ServicioInmueble",
 		  "options":
 			[
 				{
 					"label": "Adicionar",
-					"event": "adicionarServicioIncluido"
+					"event": "adicionarServicioInmueble"
 				},
 				{
 					"label": "Listar",
-					"event": "listarServicioIncluido"
-				},
-				{
-					"label": "Borrar por IdServicio",
-					"event": "eliminarServicioIncluidoPorIdServicio"
-				},
-				{
-					"label": "Borrar por idReserva",
-					"event": "eliminarServicioIncluidoPorIdReserva"
-				}
-			]
-		},
-		
-		{ "menuTitle": "ServicioNoIncluido",
-		  "options":
-			[
-				{
-					"label": "Adicionar",
-					"event": "adicionarServicioNoIncluido"
-				},
-				{
-					"label": "Listar",
-					"event": "listarServicioNoIncluido"
-				},
-				{
-					"label": "Borrar por IdServicio",
-					"event": "eliminarServicioNoIncluidoPorIdServicio"
-				},
-				{
-					"label": "Borrar por idReserva",
-					"event": "eliminarServicioNoIncluidoPorIdReserva"
-				}
-			]
-		},
-		
-		{ "menuTitle": "Vecino",
-		  "options":
-			[
-				{
-					"label": "Adicionar",
-					"event": "adicionarVecino"
-				},
-				{
-					"label": "Listar",
-					"event": "listarVecino"
+					"event": "listarServicioInmueble"
 				},
 				{
 					"label": "Borrar por Id",
-					"event": "eliminarVecinoPorId"
+					"event": "eliminarServicioInmueblePorId"
 				}
 			]
 		},

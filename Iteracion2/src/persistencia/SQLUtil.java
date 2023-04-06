@@ -47,10 +47,8 @@ public class SQLUtil {
         Query qPersonaNatural = pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaPersonaNatural());
         Query qReserva= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaReserva());
         Query qServicio= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaServicio());
-        Query qServicioAdicionalUsado= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaServicioAdicionalUsado());
-        Query qServicioIncluido= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaServicioIncluido());
-        Query qServicioNoIncluido= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaServicioNoIncluido());
-        Query qVecino= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaVecino());
+        Query qServicioInmueble= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaServicioInmueble());
+        Query qServicioUsado= pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaServicioUsado());
         Query qViviendaUniversitaria = pm.newQuery(SQL, "DELETE FROM "+ pa.darTablaViviendaUniversitaria());
         
         long apartamentoEliminados = (long) qApartamento.executeUnique ();
@@ -64,14 +62,12 @@ public class SQLUtil {
         long personaNaturalEliminados= (long) qPersonaNatural.executeUnique ();
         long reservaEliminados= (long) qReserva.executeUnique ();
         long servicioEliminados= (long) qServicio.executeUnique ();
-        long servicioAdicionalUsadoEliminados= (long) qServicioAdicionalUsado.executeUnique ();
-        long servicioIncluidoEliminados= (long) qServicioIncluido.executeUnique ();
-        long servicioNoIncluidoEliminados= (long) qServicioNoIncluido.executeUnique ();
-        long vecinoEliminados= (long) qVecino.executeUnique ();
+        long servicioInmuebleEliminados= (long) qServicioInmueble.executeUnique ();
+        long servicioUsadoEliminados= (long) qServicioUsado.executeUnique ();
         long viviendaUniversitariaEliminados= (long) qViviendaUniversitaria.executeUnique ();
         return new long [] {apartamentoEliminados, casaEliminados, clienteEliminados, habitacionEliminados,
         		hostalEliminados, hotelEliminados, inmuebleEliminados, operadorEliminados, 
-        		personaNaturalEliminados, reservaEliminados, servicioEliminados, servicioAdicionalUsadoEliminados,
-        		servicioIncluidoEliminados, servicioNoIncluidoEliminados, vecinoEliminados, viviendaUniversitariaEliminados};
+        		personaNaturalEliminados, reservaEliminados, servicioEliminados, servicioInmuebleEliminados,
+        		servicioUsadoEliminados,viviendaUniversitariaEliminados};
 	}
 }
