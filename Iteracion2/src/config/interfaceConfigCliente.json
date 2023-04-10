@@ -1,0 +1,42 @@
+ {
+	"title": "Menu para el cliente",
+	"frameH": 600,
+	"frameW": 800,
+	"menuBar":
+	[
+		{ "menuTitle":"Requerimientos Funcionales"
+		  "options":
+		  	[
+		  		{
+		  			"label":"Registro Cliente",
+		  			"event":"registroCliente"
+		  		},
+		  		{
+		  			"label":"Realizar reserva",
+		  			"event": "registroReserva"
+		  		},
+		  		{
+		  			"label":"Cancelar reserva",
+		  			"event": "cancelarReserva"
+		  		}
+		  	]
+		},
+		{ "menuTitle":"Requerimientos Funcionales de Consulta"
+		  "options":
+		  	[
+		  		{
+		  			"label":"Consultar 20 ofertas más populares",
+		  			"event": "consultaOfertasPopulares"
+		  		},
+		  		{
+		  			"label":"Mostrar indice de ocupacion de las ofertas",
+		  			"event": "indiceOcupacion"
+		  		},
+		  		{
+		  			"label":"Alojamientos disponibles en fecha y con conjunto de servicios",
+		  			"event":"alojamientosDisponibles"
+		  		}
+		  	]
+		}	
+	]
+}

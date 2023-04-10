@@ -1,0 +1,42 @@
+ {
+	"title": "Menu para el operador",
+	"frameH": 600,
+	"frameW": 800,
+	"menuBar":
+	[
+		{ "menuTitle":"Requerimientos Funcionales"
+		  "options":
+		  	[
+		  		{
+		  			"label":"Registro Operador",
+		  			"event":"registroOperador"
+		  		},
+		  		{
+		  			"label":"Registrar propuesta de alojamiento",
+		  			"event": "registroAlojamiento"
+		  		},
+		  		{
+		  			"label":"Retirar oferta de alojamiento",
+		  			"event": "retirarAlojamiento"
+		  		}
+		  	]
+		},
+		{ "menuTitle":"Requerimientos Funcionales de Consulta"
+		  "options":
+		  	[
+		  		{
+		  			"label":"Mostrar el dinero recibido en año corrido y año actual",
+		  			"event": "consultaDineroRecibido"
+		  		},
+		  		{
+		  			"label":"Mostrar uso de AlohAndes para cada tipo de usario",
+		  			"event": "consultaUsoApp"
+		  		},
+		  		{
+		  			"label":"Mostrar uso de AlohAndes para un usario",
+		  			"event":"consultaUsoAppPorUsuario"
+		  		}
+		  	]
+		}	
+	]
+}
