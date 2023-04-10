@@ -20,23 +20,6 @@
 		  			"event": "retirarAlojamiento"
 		  		}
 		  	]
-		},
-		{ "menuTitle":"Requerimientos Funcionales de Consulta"
-		  "options":
-		  	[
-		  		{
-		  			"label":"Mostrar el dinero recibido en año corrido y año actual",
-		  			"event": "consultaDineroRecibido"
-		  		},
-		  		{
-		  			"label":"Mostrar uso de AlohAndes para cada tipo de usario",
-		  			"event": "consultaUsoApp"
-		  		},
-		  		{
-		  			"label":"Mostrar uso de AlohAndes para un usario",
-		  			"event":"consultaUsoAppPorUsuario"
-		  		}
-		  	]
-		}	
+		}
 	]
 }

@@ -12,6 +12,8 @@ public interface VOHabitacion {
 	
 	public int getCapacidad();
 	
+	public long getId();
+	
 	@Override
 	public String toString();
 	

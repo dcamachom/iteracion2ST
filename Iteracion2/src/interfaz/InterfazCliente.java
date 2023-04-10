@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
 
+import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +25,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import negocio.AlohAndes;
+import negocio.VOCliente;
+import negocio.VOReserva;
 
 @SuppressWarnings("serial")
 public class InterfazCliente extends JFrame implements ActionListener{
@@ -151,31 +154,54 @@ public class InterfazCliente extends JFrame implements ActionListener{
 	 
 	 public void registroCliente() {
 		 
+		 try {
+			 
+			 String nombre= JOptionPane.showInputDialog(this, "Nombre del cliente?", "Registro ciente", JOptionPane.QUESTION_MESSAGE);
+			 String correo=JOptionPane.showInputDialog(this, "Correo", "Registro ciente", JOptionPane.QUESTION_MESSAGE);
+			 String telefono=JOptionPane.showInputDialog(this, "Telefono?", "Registro ciente", JOptionPane.QUESTION_MESSAGE);
+			 String tipoMiembro=JOptionPane.showInputDialog(this, "TipoMiembro?", "Registro ciente", JOptionPane.QUESTION_MESSAGE);
+			 if (nombre!=null && correo!=null && telefono!=null && tipoMiembro!=null) {
+				 VOCliente tb= alohAndes.adicionarCliente(nombre, correo, telefono, tipoMiembro);
+				 if (tb == null)
+	        		{
+	        			throw new Exception ("No se registrar al cliente con el nombre: " + nombre);
+	        	}else {
+	        		String resultado = "En registroCliente\n\n";
+	        		resultado += "Cliente adicionado exitosamente: " + tb;
+	    			resultado += "\n Operación terminada";
+	    			panelDatos.actualizarInterfaz(resultado);
+	        	}
+			 }
+		 }
+		 catch (Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		 }
+	 }
+	 
+	 public void cancelarReserva() {
+		 
+		 try {
+			 String idInput= JOptionPane.showInputDialog(this, "id de reserva?", "Cancelar reserva", JOptionPane.QUESTION_MESSAGE);
+			 Long id=Long.parseLong(idInput);
+			 if (id!=null) {
+				 alohAndes.eliminarReservaPorId(id);
+				 String resultado = "En cancelarReserva \n\n";
+	     		 resultado += "reserva eliminada exitosamente";
+	 			 resultado += "\n Operación terminada";
+	 			 panelDatos.actualizarInterfaz(resultado);
+			 }
+		 }
+		 catch (Exception e) {
+				String resultado = generarMensajeError(e);
+				panelDatos.actualizarInterfaz(resultado);
+			 }
 	 }
 	 
 	 public void registroReserva() {
 		 
 	 }
 	 
-	 public void cancelarReserva() {
-		 
-	 }
-	 
-	 /*
-	  * Métodos para los requerimientos funcionales de consulta
-	  */
-	 
-	 public void consultaOfertaPopulares() {
-		 
-	 }
-	 
-	 public void indiceOcupacion() {
-		 
-	 }
-	 
-	 public void alojamientosDisponibles() {
-		 
-	 }
 	
 	 /*
 	  * Main
@@ -195,7 +221,26 @@ public class InterfazCliente extends JFrame implements ActionListener{
 	        {
 	            e.printStackTrace( );
 	        }
-	    } 
+	    }
+	 
+	 private String generarMensajeError(Exception e) 
+		{
+			String resultado = "************ Error en la ejecución\n";
+			resultado += e.getLocalizedMessage() + ", " + darDetalleException(e);
+			resultado += "\n\nRevise datanucleus.log y parranderos.log para más detalles";
+			return resultado;
+		}
+	 
+	 private String darDetalleException(Exception e) 
+		{
+			String resp = "";
+			if (e.getClass().getName().equals("javax.jdo.JDODataStoreException"))
+			{
+				JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
+				return je.getNestedExceptions() [0].getMessage();
+			}
+			return resp;
+		}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {

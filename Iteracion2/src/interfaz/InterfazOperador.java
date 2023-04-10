@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
 
+import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +25,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import negocio.AlohAndes;
+import negocio.VOCliente;
+import negocio.VOHabitacion;
+import negocio.VOInmueble;
+import negocio.VOOperador;
 
 @SuppressWarnings("serial")
 public class InterfazOperador extends JFrame implements ActionListener{
@@ -149,10 +154,63 @@ public class InterfazOperador extends JFrame implements ActionListener{
 	 */
 	 
 	 public void registroOperador() {
-		 
+		 try {
+			 
+			 String nombre= JOptionPane.showInputDialog(this, "Nombre del cliente?", "Registro ciente", JOptionPane.QUESTION_MESSAGE);
+			 String tipoMiembro=JOptionPane.showInputDialog(this, "TipoMiembro?", "Registro ciente", JOptionPane.QUESTION_MESSAGE);
+			 if (nombre!=null && tipoMiembro!=null) {
+				 VOOperador tb= alohAndes.adicionarOperador(nombre, tipoMiembro);
+				 if (tb == null)
+	        		{
+	        			throw new Exception ("No se registro al operador con el nombre: " + nombre);
+	        	}else {
+	        		String resultado = "En registroOperador\n\n";
+	        		resultado += "Operador adicionado exitosamente: " + tb;
+	    			resultado += "\n Operación terminada";
+	    			panelDatos.actualizarInterfaz(resultado);
+	        	}
+			 }
+		 }
+		 catch (Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		 }
 	 }
 	 
 	 public void registroAlojamiento() {
+		 
+		 PanelInmuebles panel= new PanelInmuebles(this);
+		 panel.setVisible(true);
+		 this.setVisible(false);
+		 
+	 }
+	 
+	 public void registroHabitacion() {
+		 
+		 try {
+			 String capacidad= JOptionPane.showInputDialog(this, "Capacidad?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String tipo=JOptionPane.showInputDialog(this, "Tipo?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String costo= JOptionPane.showInputDialog(this, "Costo base?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String idOp= JOptionPane.showInputDialog(this, "IdOperador?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 int capacidad2=Integer.parseInt(capacidad);
+			 int costoB2= Integer.parseInt(costo);
+			 long idOp2= Long.parseLong(idOp);
+			 if (tipo!=null) {
+				 VOHabitacion tb=alohAndes.adicionarHabitacion(costoB2, idOp2, capacidad2, true, tipo);
+				 if (tb == null)
+	        		{
+	        			throw new Exception ("No se registro al operador con la habitacion");
+	        	}else {
+	        		String resultado = "En registroHabitacion\n\n";
+	        		resultado += "Habitacion adicionado exitosamente: " + tb;
+	    			resultado += "\n Operación terminada";
+	    			panelDatos.actualizarInterfaz(resultado);
+	        	}
+			 }
+		 }catch(Exception e) {
+				String resultado = generarMensajeError(e);
+				panelDatos.actualizarInterfaz(resultado);
+			 }
 		 
 	 }
 	 
@@ -160,21 +218,6 @@ public class InterfazOperador extends JFrame implements ActionListener{
 		 
 	 }
 	 
-	 /*
-	  * Métodos para los requerimientos funcionales de consulta
-	  */
-	 
-	 public void consultaDineroRecibido() {
-		 
-	 }
-	 
-	 public void consultaUsoApp() {
-		 
-	 }
-	 
-	 public void consultaUsoAppPorUsuario() {
-		 
-	 }
 	 
 	 /*
 	  * Main
@@ -194,7 +237,26 @@ public class InterfazOperador extends JFrame implements ActionListener{
 	        {
 	            e.printStackTrace( );
 	        }
-	    } 
+	    }
+	 
+	 private String generarMensajeError(Exception e) 
+		{
+			String resultado = "************ Error en la ejecución\n";
+			resultado += e.getLocalizedMessage() + ", " + darDetalleException(e);
+			resultado += "\n\nRevise datanucleus.log y parranderos.log para más detalles";
+			return resultado;
+		}
+	 
+	 private String darDetalleException(Exception e) 
+		{
+			String resp = "";
+			if (e.getClass().getName().equals("javax.jdo.JDODataStoreException"))
+			{
+				JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
+				return je.getNestedExceptions() [0].getMessage();
+			}
+			return resp;
+		}
 	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
