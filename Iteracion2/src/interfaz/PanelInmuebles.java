@@ -40,9 +40,9 @@ public class PanelInmuebles extends JFrame implements ActionListener{
 			if (btnHabitacion.isSelected()) {
 				interfaz.registroHabitacion();
 			}else if (btnApto.isSelected()) {
-				
+				interfaz.registrarApto();
 			}else if (btnCasa.isSelected()) {
-				
+				interfaz.registrarCasa();
 			}
 		}
 	}

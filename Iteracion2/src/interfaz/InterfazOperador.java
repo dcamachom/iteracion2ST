@@ -25,6 +25,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import negocio.AlohAndes;
+import negocio.VOApartamento;
+import negocio.VOCasa;
 import negocio.VOCliente;
 import negocio.VOHabitacion;
 import negocio.VOInmueble;
@@ -199,7 +201,7 @@ public class InterfazOperador extends JFrame implements ActionListener{
 				 VOHabitacion tb=alohAndes.adicionarHabitacion(costoB2, idOp2, capacidad2, true, tipo);
 				 if (tb == null)
 	        		{
-	        			throw new Exception ("No se registro al operador con la habitacion");
+	        			throw new Exception ("No se registro a la habitacion");
 	        	}else {
 	        		String resultado = "En registroHabitacion\n\n";
 	        		resultado += "Habitacion adicionado exitosamente: " + tb;
@@ -207,6 +209,63 @@ public class InterfazOperador extends JFrame implements ActionListener{
 	    			panelDatos.actualizarInterfaz(resultado);
 	        	}
 			 }
+		 }catch(Exception e) {
+				String resultado = generarMensajeError(e);
+				panelDatos.actualizarInterfaz(resultado);
+			 }
+		 
+	 }
+	 
+	 public void registrarApto() {
+		 try {
+			 String numHabi= JOptionPane.showInputDialog(this, "Numero de habitaciones?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String costo= JOptionPane.showInputDialog(this, "Costo base?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String idOp= JOptionPane.showInputDialog(this, "IdOperador?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String amoblado= JOptionPane.showInputDialog(this, "Amoblado?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 int numHabi2=Integer.parseInt(numHabi);
+			 int costoB2= Integer.parseInt(costo);
+			 long idOp2= Long.parseLong(idOp);
+			 boolean amoblado2= Boolean.valueOf(amoblado);
+			 
+			 VOApartamento tb=alohAndes.adicionarApartamento(costoB2, idOp2,amoblado2, numHabi2);
+			 if (tb == null)
+        		{
+        			throw new Exception ("No se registro al Apartmento");
+        	}else {
+        		String resultado = "En registroApartamento\n\n";
+        		resultado += "Apartamento adicionado exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+        	}
+			 
+		 }catch(Exception e) {
+				String resultado = generarMensajeError(e);
+				panelDatos.actualizarInterfaz(resultado);
+			 }
+	 }
+	 
+	 public void registrarCasa() {
+		 
+		 try {
+			 String numHabi= JOptionPane.showInputDialog(this, "Numero de habitaciones?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String costo= JOptionPane.showInputDialog(this, "Costo base?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String idOp= JOptionPane.showInputDialog(this, "IdOperador?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 String seguro= JOptionPane.showInputDialog(this, "Seguro?", "Registro Habitacion", JOptionPane.QUESTION_MESSAGE);
+			 int numHabi2=Integer.parseInt(numHabi);
+			 int costoB2= Integer.parseInt(costo);
+			 long idOp2= Long.parseLong(idOp);
+			 
+			 VOCasa tb=alohAndes.adicionarCasa(costoB2, idOp2, numHabi2, seguro);
+			 if (tb == null)
+        		{
+        			throw new Exception ("No se registro la casa");
+        	}else {
+        		String resultado = "En registroCasa\n\n";
+        		resultado += "Casa adicionada exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+        	}
+			 
 		 }catch(Exception e) {
 				String resultado = generarMensajeError(e);
 				panelDatos.actualizarInterfaz(resultado);
