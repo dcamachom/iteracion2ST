@@ -1,0 +1,25 @@
+ {
+	"title": "Menu para el operador",
+	"frameH": 600,
+	"frameW": 800,
+	"menuBar":
+	[
+		{ "menuTitle":"Requerimientos Funcionales"
+		  "options":
+		  	[
+		  		{
+		  			"label":"Registro Operador",
+		  			"event":"registroOperador"
+		  		},
+		  		{
+		  			"label":"Registrar propuesta de alojamiento",
+		  			"event": "registroAlojamiento"
+		  		},
+		  		{
+		  			"label":"Retirar oferta de alojamiento",
+		  			"event": "retirarAlojamiento"
+		  		}
+		  	]
+		}
+	]
+}

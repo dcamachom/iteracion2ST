@@ -1,0 +1,25 @@
+ {
+	"title": "Menu para el cliente",
+	"frameH": 600,
+	"frameW": 800,
+	"menuBar":
+	[
+		{ "menuTitle":"Requerimientos Funcionales"
+		  "options":
+		  	[
+		  		{
+		  			"label":"Registro Cliente",
+		  			"event":"registroCliente"
+		  		},
+		  		{
+		  			"label":"Realizar reserva",
+		  			"event": "registroReserva"
+		  		},
+		  		{
+		  			"label":"Cancelar reserva",
+		  			"event": "cancelarReserva"
+		  		}
+		  	]
+		}
+	]
+}
